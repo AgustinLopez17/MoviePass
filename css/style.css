@@ -68,8 +68,6 @@ h1{
 
 @media screen and (min-width: 768px){
 
-    
-
     header{
         height: 100px;
         width: 100%;
@@ -150,9 +148,13 @@ h1{
         color: rgb(255, 255, 255);
         border-radius: 6px;
         cursor: pointer;
+        
     }
 
-    
+    .submit:hover{
+        border: 1px solid rgba(255, 255, 255, 0.74);
+        transition: 0.3s;
+    }
 
 
     .title{
@@ -177,7 +179,7 @@ h1{
     }
 
     .register:hover{
-        border:2px solid rgba(255, 255, 255, 0.74);
+        border:1px solid rgba(255, 255, 255, 0.74);
         transition: 0.3s;
     }
 
