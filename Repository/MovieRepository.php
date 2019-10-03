@@ -7,6 +7,11 @@
     {
         private $movieList = array();
 
+        public function DeleteAll(){
+            $this->movieList = null;
+            $this->SaveData();
+        }
+
         public function Add($newMovie){
             $this->RetrieveData();
             array_push($this->movieList,$newMovie);
@@ -32,7 +37,8 @@
 
         private function SaveData() {
             $arrayToEncode = array();
-
+            
+            
             foreach($this->movieList as $user)
             {
                 $valuesArray["id"] = $user->getId();
@@ -40,7 +46,8 @@
                 $valuesArray["runtime"] = $user->getLenght();
                 $valuesArray["original_language"] = $user->getLanguage();
                 $valuesArray["backdrop_path"] = $user->getImage();
-
+                $valuesArray["overview"] = $user->getOverview();
+ 
                 array_push($arrayToEncode, $valuesArray);
             }
 
@@ -60,13 +67,15 @@
 
             $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
 
-            foreach($arrayToDecode as $valuesArray)
-            {
-
-                $movie = new Movie($valuesArray["id"], $valuesArray["title"], $valuesArray["runtime"], $valuesArray["original_language"], $valuesArray["backdrop_path"]);
-
-                array_push($this->movieList, $movie);
-
+            if(is_array($arrayToDecode)){
+                foreach($arrayToDecode as $valuesArray)
+                {
+    
+                    $movie = new Movie($valuesArray["id"], $valuesArray["title"], $valuesArray["runtime"], $valuesArray["original_language"], $valuesArray["backdrop_path"],$valuesArray["overview"]);
+    
+                    array_push($this->movieList, $movie);
+    
+                }
             }
 
         }
@@ -74,7 +83,7 @@
         public function getById($id) {
             $this->RetrieveData();
             foreach ($this->movieList as $key => $movie) {
-                if($movie->getEmail() == $id) {
+                if($movie->getId() == $id) {
                     return $movie;
                 }
             }

@@ -6,13 +6,15 @@
         private $lenght;
         private $language;
         private $image;
+        private $overview;
 
-        public function __construct($id,$title,$lenght,$language,$image){
+        public function __construct($id,$title,$lenght,$language,$image,$overview){
             $this->id = $id;
             $this->title = $title;
-            $this->length = $lenght;
+            $this->lenght = $lenght;
             $this->language = $language;
             $this->image = $image;
+            $this->overview = $overview;
         }
 
         public function getTitle()
@@ -66,6 +68,17 @@
         public function setId($id)
         {
                 $this->id = $id;
+
+                return $this;
+        }
+
+        public function getOverview()
+        {
+                return $this->overview;
+        }
+        public function setOverview($overview)
+        {
+                $this->overview = $overview;
 
                 return $this;
         }
