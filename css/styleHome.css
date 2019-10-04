@@ -48,7 +48,7 @@ ul{
     color: white;
     display: inline;
     position: absolute;
-    margin-top: 9%;
+    margin-top: 7%;
     margin-left: -37.5%;
     font-size: 25px;
     color: #850339;
@@ -64,6 +64,23 @@ img#logo{
     margin-right: 30px;
     margin-top: 160px;
     -webkit-transition: width .5s, height .5s, margin-right .5s, margin-top .5s, filter .5s;
+}
+
+#stroke{
+    position: absolute;
+    top:228%;
+    left: 50.5%;
+    transform: translate(-50%);
+    -webkit-transition: top .5s, height .5s, width .5s;
+    stroke-dasharray: 1442px;
+    stroke-dashoffset: 1442px;
+    animation: line-anim 3s ease forwards;
+}
+
+@keyframes line-anim{
+    to{
+        stroke-dashoffset: 0;
+    }
 }
 
 ul li{
